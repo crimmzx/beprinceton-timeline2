@@ -17,15 +17,16 @@ function App() {
   return (
   <div>
     <h1 className = "title">BePrinceton.</h1>
+    <h2>BeReal images are images that are taken at a random time whenever the app chooses to go off. <br>
+    </br>
+      This project represents the BeReals I've taken at Princeton
+      and displays them in a timeline order. 
+    </h2>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link>
     <VerticalTimeline>
       {
         timelineElements.map(element => {
-          let isWorkIcon = element.icon === "work"
-          let showButton = element.buttonText !== undefined && 
-          element.buttonText !== null && 
-          element.buttonText !== "";
-
+          let isWorkIcon = element.icon === "friends"
           return(
             <VerticalTimelineElement
             key = {element.key}
@@ -37,22 +38,19 @@ function App() {
             <h3 className='vertical-timeline-element-title'>
                 {element.title}
             </h3>
-            <img src = {element.image} alt = "big boss" width = "200" height = "300"></img>
+            <img src = {element.image} alt = "BeReals!" width = "100%" height = "100%"></img>
             <h5 className='vertical-timeline-element-subtitle'>
-                {element.location}
+                Locations: {element.location}
             </h5>
-            <p id = "description">{element.description}</p>
-            {showButton && (<a className = {`button ${
-              isWorkIcon ? "workButton" : "schoolBUtton"}`}
-              href ="/"
-              >
-              {element.buttonText}
-              </a>
-              )}
+            <h5 className='moods'>
+                Moods: {element.mood}
+            </h5>
+            <p id = "description">{element.description }</p>
             </VerticalTimelineElement>
           );
         })}
     </VerticalTimeline>
+    <h1>Summary Statistics:</h1>
   </div>
   );
 }
